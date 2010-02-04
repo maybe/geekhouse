@@ -15,9 +15,9 @@
  * @category   Zend
  * @package    Zend_Mail
  * @subpackage Transport
- * @copyright  Copyright (c) 2005-2009 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Sendmail.php 18951 2009-11-12 16:26:19Z alexander $
+ * @version    $Id: Sendmail.php 20096 2010-01-06 02:05:09Z bkarwin $
  */
 
 
@@ -33,7 +33,7 @@ require_once 'Zend/Mail/Transport/Abstract.php';
  * @category   Zend
  * @package    Zend_Mail
  * @subpackage Transport
- * @copyright  Copyright (c) 2005-2009 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
@@ -53,7 +53,6 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
      */
     public $parameters;
 
-
     /**
      * EOL character string
      * @var string
@@ -61,6 +60,11 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
      */
     public $EOL = PHP_EOL;
 
+    /**
+     * error information
+     * @var string
+     */
+    protected $_errstr;
 
     /**
      * Constructor.
@@ -83,6 +87,7 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
      */
     public function _sendMail()
     {
+        set_error_handler(array($this, '_handleMailErrors'));
         if ($this->parameters === null) {
             $result = mail(
                 $this->recipients,
@@ -97,12 +102,14 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
                 $this->header,
                 $this->parameters);
         }
-        if (!$result) {
+        restore_error_handler();
+
+        if ($this->_errstr !== null || !$result) {
             /**
              * @see Zend_Mail_Transport_Exception
              */
             require_once 'Zend/Mail/Transport/Exception.php';
-            throw new Zend_Mail_Transport_Exception('Unable to send mail');
+            throw new Zend_Mail_Transport_Exception('Unable to send mail. ' . $this->_errstr);
         }
     }
 
@@ -169,5 +176,20 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
         $this->header = rtrim($this->header);
     }
 
-}
+    /**
+     * Temporary error handler for PHP native mail().
+     *
+     * @param int    $errno
+     * @param string $errstr
+     * @param string $errfile
+     * @param string $errline
+     * @param array  $errcontext
+     * @return true
+     */
+    public function _handleMailErrors($errno, $errstr, $errfile = null, $errline = null, array $errcontext = null)
+    {
+        $this->_errstr = $errstr;
+        return true;
+    }
 
+}
