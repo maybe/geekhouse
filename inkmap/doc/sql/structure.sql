@@ -8,7 +8,7 @@ CREATE TABLE   users (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'email',
   `user_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户名',
   `password` varchar(40) COLLATE utf8_unicode_ci NOT NULL COMMENT '密码',
-  `is_admin` tinyint(1) DEFAULT NULL COMMENT '是否是管理员',
+  `role` varchar(20) DEFAULT NULL COMMENT '是否是管理员',
   `question` varchar(255) DEFAULT NULL COMMENT '密码保护问题',
   `answer` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '密码保护问题答案',
   `gender` tinyint(1) unsigned DEFAULT NULL COMMENT '性别',
@@ -29,6 +29,7 @@ CREATE TABLE   users (
   `updated_at` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 
 
 

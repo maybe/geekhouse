@@ -13,7 +13,8 @@ set_include_path(implode(PATH_SEPARATOR, array(
     realpath(APPLICATION_PATH . '/../library'),
     get_include_path(),
 )));
-
+defined('APPLICATION_test')
+    || define('APPLICATION_test', "aaaaaaaaaa");
 /** Zend_Application */
 require_once 'Zend/Application.php';
 
