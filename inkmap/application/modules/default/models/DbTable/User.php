@@ -11,24 +11,24 @@ class Model_DbTable_User extends Zend_Db_Table_Abstract
 		}
 		return $row->toArray();
 	}
-	public function addUser($user)
+
+	public function createUser($username, $password, $firstName, $lastName, $role)
 	{
-		$data = array(
-            'artist' => $user['a'],
-            'title' => $title,
-		);
-		$this->insert($data);
+		// create a new row
+		$rowUser = $this->createRow();
+		if($rowUser) {
+			// update the row values
+			$rowUser->username = $username;
+			$rowUser->password = md5($password);
+			$rowUser->first_name = $firstName;
+			$rowUser->last_name = $lastName;
+			$rowUser->role = $role;
+			$rowUser->save();
+			//return the new user
+			return $rowUser;
+		} else {
+			throw new Zend_Exception("Could not create user!");
+		}
 	}
-	public function updateUser($id, $artist, $title)
-	{
-		$data = array(
-          'artist' => $artist,
-          'title' => $title,
-		);
-		$this->update($data, 'id = '. (int)$id);
-	}
-	public function deleteUser($id)
-	{
-		$this->delete('id =' . (int)$id);
-	}
+
 }

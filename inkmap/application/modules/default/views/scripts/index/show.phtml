@@ -1,11 +1,14 @@
-<h2>Home</h2>
-<p>This is the default home page...</p>
+<div>
+<div></div>
+<div><span>aaaa</span></div>
 
 
+<table>
 <?php foreach($this->users as $user) : ?>
 <tr>
      <td><?php echo $this->escape($user->id);?></td>
      <td><?php echo $this->escape($user->email);?></td>
 </tr>
 <?php endforeach; ?>
-
+</table>
+</div>

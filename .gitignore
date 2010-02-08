@@ -1,0 +1,4 @@
+.tmp_*.phtml.*
+.buildpath
+.project
+.settings/
