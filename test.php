@@ -6,7 +6,7 @@
 //for ($i=0; $i<=count($result); $i++) {
 //printf ("name: %s\r", mysql_result($result,$i,"id"));
 //}
-echo substr(md5(RAND()),0, 20);
-echo '\r';
-echo md5(RAND());
+
+
+echo md5("0b029eae9de0342fc7ba")
 ?>

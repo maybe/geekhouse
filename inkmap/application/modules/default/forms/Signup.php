@@ -30,6 +30,24 @@ class  Form_Signup extends Zend_Dojo_Form
 		)
 		);
 			
+		// EMAIL
+		$this->addElement(
+                 'ValidationTextBox',   
+                 'user_name',   
+		array(
+                  'value'      => '',  
+                  'label'      => '昵称 : ',  
+                  'trim'       => true,  
+                  'lowercase'  => true,  
+                  'required'   => true,  
+                  'regExp'     => '^.{4,}$',  
+                  'invalidMessage' => '清写一个昵称',  
+                  'validators' => array(  
+						array('StringLength', false, 4)
+				  ),
+                  'filters'  => array('StringToLower'),  
+		)
+		);
 			
 		// PASSWORD
 		$this->addElement(
@@ -37,7 +55,7 @@ class  Form_Signup extends Zend_Dojo_Form
        		'password1',   
 			array(
 				'id'			 => 'password1',
-           		'label'          => 'Password',  
+           		'label'          => '输入密码 : ',  
            		'required'       => true,  
            		'trim'           => true,  
            		'regExp'         => '^.{4,}$',  
@@ -51,16 +69,29 @@ class  Form_Signup extends Zend_Dojo_Form
        		'password2',   
 			array(
 				'id'			 => 'password2',
-           		'label'          => 'Password',  
+           		'label'          => '确认密码 : ',  
            		'required'       => true,  
            		'trim'           => true,  
            		'regExp'         => '^.{4,}$',  
-           		'invalidMessage' => '两次密码不同',  
+           		'invalidMessage' => '两次输入密码不同',  
         		'validator'  =>  "return this.getValue() == dijit.byId('password1').getValue()"
 			)
 		);
-		
 			
+		$this->addElement(new Zend_Form_Element_Captcha(
+			'captcha', array(				
+			'label'   => '输入验证码 : ',		
+			'captcha' => array(
+				'captcha' => 'Image',
+				'wordLen' => 6,
+				'timeout' => 300,
+				'imgUrl' => '/images/captcha/',
+				'width' => 200,
+				'height' => 60,
+				'font' => BASE_PATH.'/images/ACTIVA.TTF'))));
+		
+		$this->addElement(new Zend_Form_Element_Hidden("role",array("value"=>"user")));
+							
 		// SUBMIT
 		$this->addElement(
        		'SubmitButton',   
@@ -68,7 +99,7 @@ class  Form_Signup extends Zend_Dojo_Form
 			array(
            		'required'   => false,  
            		'ignore'     => true,  
-           		'label'      => 'Submit Button!',  
+           		'label'      => '注册',  
 			)
 		);
 			

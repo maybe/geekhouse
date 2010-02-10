@@ -12,11 +12,11 @@ class  Form_Signin extends Zend_Dojo_Form
 			
 		// EMAIL
 		$this->addElement(
-                 'ValidationTextBox',   
+                 'TextBox',   
                  'email',   
 		array(
                   'value'      => '',  
-                  'label'      => 'Email address : ',  
+                  'label'      => '电子邮箱 : ',  
                   'trim'       => true,  
                   'lowercase'  => true,  
                   'required'   => true,  
@@ -36,12 +36,12 @@ class  Form_Signin extends Zend_Dojo_Form
        		'PasswordTextBox',   
        		'password',   
 			array(
-           		'label'          => 'Password : ',  
+           		'label'          => '密码 : ',  
            		'required'       => true,  
            		'trim'           => true,  
            		'regExp'         => '^.{4,}$',  
            		'invalidMessage' => '密码太短！',  
-        		'validators'  => array(array('StringLength', false, 4))  
+        		'validators'  => array(array('StringLength', false, 4))
 			)
 		);
 			
