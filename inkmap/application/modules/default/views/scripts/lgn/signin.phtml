@@ -1,0 +1,49 @@
+<?php
+$this->headTitle()->append(' - Sign In');
+?>
+
+
+<div class="clearfix" id="main">
+
+<div class="clearfix navPane" id="group_1"></div>
+<div class="clearfix contentPane" id="group_2">
+
+<div class="mantle" id="contentPaneMantle"><!----></div>
+<div class="controls clearfix"><!----></div>
+
+<div class="gridShell styleBoxShell">
+<div class="gridCell">
+<div class="styleBox">
+
+<h2>注册为InkMap会员</h2>
+
+<div class="hr"></div>
+<p>We'll just need a little info to get you started.</p>
+<div class="buttonDiv"><a title="Continue" class="button  submit"
+	href="https://www.zazzle.com/lgn/registration?lru=http%3a%2f%2fwww.zazzle.com%2f"
+	id="page_register"><span class="buttonLeft"><span class="buttonRight">Continue</span></span></a>
+</div>
+</div>
+</div>
+<div class="gridCell" id="page-signinShell">
+<div class="styleBox">
+
+<h2>我已经有帐号</h2>
+
+<div class="hr"></div>
+<div id='signinForm'><?php echo $this->signinForm->render();
+if($this->loginMessage){
+	echo $this->loginMessage;
+}
+?></div>
+
+</div>
+</div>
+</div>
+
+<div class="controls clearfix"><!----></div>
+
+</div>
+<div class="clearfix infoPane" id="group_3"></div>
+<div class="clearfix bottomPane" id="group_4"><!----></div>
+</div>

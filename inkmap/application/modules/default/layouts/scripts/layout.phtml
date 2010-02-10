@@ -1,49 +1,41 @@
 <?php
 echo '<?xml version="1.0" encoding="UTF-8" ?>';
 echo $this->doctype();
+
+$this->layout()->userForm = $this->action('index', 'lgn');
 ?>
+
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <?php
-$this->headTitle('Ink Map - ');
+$this->headTitle()->setPrefix('Ink Map');
 echo $this->headTitle();
-echo $this->headScript();
 if ($this->dojo()->isEnabled()){
 	$this->dojo()->setLocalPath('/scripts/dojo/dojo/dojo.js')
 	->addStyleSheetModule('dijit.themes.tundra');
 	echo $this->dojo();
 }
+echo $this->headScript();
 $this->headLink()->appendStylesheet('/styles/layout.css');
 $this->headLink()->appendStylesheet('/styles/default/footer.css');
 $this->headLink()->appendStylesheet('/styles/default/head.css');
-
-
 echo $this->headLink();
 ?>
-
 <script type="text/javascript"
 	src="http://www.zazzle.com/bld/z.2/js/library/Zazzle.js?r=trunk.83214"></script>
 </head>
+
 <body class='tundra'>
+<!---------------------------------------------------------------this is header-->
 <div class="clearfix" id="header">
 <div id="crossSiteShell">
 <div id="crossSiteContent">
 <div id="siteLinksContent"></div>
 <div id="utilityLinksContent">
-<div class="utilitiesShell" id="page-consoleLinks2">
-<div id="utilityLinks"><strong>Welcome <a
-	href="http://www.zazzle.com/mathematix">mathematix</a>!</strong> <span
-	class="welcomeSignout">(<a id="page_logoutLink"
-	href="http://www.zazzle.com/lgn/logout?lru=https%3a%2f%2fwww.zazzle.com%2flgn%2fsignin&amp;rlru=1">Not
-you</a>?)</span> &nbsp;|&nbsp;<span class="utilityLinksCell"><a
-	target="_top" id="page-headerLinkCart"
-	href="http://www.zazzle.com/co/cart">Cart <span class="cartItems">(1)</span></a>
-&nbsp;|&nbsp;<a target="_top" id="page-headerLinkMyAccount"
-	href="http://www.zazzle.com/my/home">My Account</a> &nbsp;|&nbsp;<a
-	target="helpPopup" id="page-headerLinkHelp" href="javascript://">Help</a><a
-	class="headerToggler" id="zBar-contract" href="javascript://"></a></span>
-</div>
-</div>
+<div class="utilitiesShell" id="page-consoleLinks2"><?php
+echo $this->layout()->userForm;
+?></div>
 </div>
 <div class="skinningLeftOutside"><!----></div>
 <div class="skinningRightOutside"><!----></div>
@@ -52,12 +44,9 @@ you</a>?)</span> &nbsp;|&nbsp;<span class="utilityLinksCell"><a
 <div class="breadcrumb"><!----></div>
 <div id="headerSearchBar"></div>
 </div>
-<div id="mainShell">
-<div id="main">
-<div id='mainShellCentered'><?php echo $this->layout()->content?> &nbsp;
-</div>
-</div>
-</div>
+<!---------------------------------------------------------------this is main content-->
+<div id="mainShell"><?php echo $this->layout()->content?></div>
+<!---------------------------------------------------------------this is footer-->
 <div id="footer">
 <div id="footerContent">
 <div class="footerMain">
@@ -66,3 +55,4 @@ you</a>?)</span> &nbsp;|&nbsp;<span class="utilityLinksCell"><a
 </div>
 </div>
 </body>
+</html>

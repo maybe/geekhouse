@@ -1,13 +1,13 @@
 <?php
 
-class  Form_Login extends Zend_Dojo_Form
+class  Form_Signin extends Zend_Dojo_Form
 {
 	public function init()
 	{
 		// Dojo-enable the form:
 		Zend_Dojo::enableForm($this);
 		$this->setName('Login');
-		$this->setAction('/index/login')
+		$this->setAction('/lgn/signin')
 		->setMethod('post');
 			
 		// EMAIL
@@ -20,11 +20,11 @@ class  Form_Login extends Zend_Dojo_Form
                   'trim'       => true,  
                   'lowercase'  => true,  
                   'required'   => true,  
-                  'regExp'     => '^.{4,}$',  
-                  'invalidMessage' => 'Insert your email',  
+                  'regExp'     => '^.{6,}$',  
+                  'invalidMessage' => '邮箱太短！',  
                   'validators' => array(  
                         'EmailAddress',  
-						array('StringLength', false, 8)
+						array('StringLength', false, 6)
 				  ),
                   'filters'  => array('StringToLower'),  
 		)
@@ -36,11 +36,11 @@ class  Form_Login extends Zend_Dojo_Form
        		'PasswordTextBox',   
        		'password',   
 			array(
-           		'label'          => 'Password',  
+           		'label'          => 'Password : ',  
            		'required'       => true,  
            		'trim'           => true,  
            		'regExp'         => '^.{4,}$',  
-           		'invalidMessage' => 'Invalid password',  
+           		'invalidMessage' => '密码太短！',  
         		'validators'  => array(array('StringLength', false, 4))  
 			)
 		);
@@ -52,7 +52,7 @@ class  Form_Login extends Zend_Dojo_Form
 			array(
            		'required'   => false,  
            		'ignore'     => true,  
-           		'label'      => 'Submit Button!',  
+           		'label'      => '进入',  
 			)
 		);
 			
