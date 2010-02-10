@@ -5,6 +5,7 @@ class LgnController extends Zend_Controller_Action {
 	 * This action controls the head of every page
 	 * */
 	public function indexAction() {
+		
 		$auth = Zend_Auth::getInstance ();
 		if ($auth->hasIdentity ()) {
 			$identity = $auth->getIdentity ();
@@ -52,6 +53,7 @@ class LgnController extends Zend_Controller_Action {
 					$storage->write ( $authAdapter->getResultRowObject ( null, 'password' ) );
 					//go to index page
 					//TODO: link to the former page
+					Zend_Session::rememberMe ( '315360000' );
 					return $this->_redirect ( '/' );
 				} else {
 					throw new Exception ( "用户名或者密码不正确" );
@@ -73,6 +75,7 @@ class LgnController extends Zend_Controller_Action {
 	public function signoutAction() {
 		$authAdapter = Zend_Auth::getInstance ();
 		$authAdapter->clearIdentity ();
+	//	Zend_Session::forgetMe ();
 		$this->_redirect ( 'lgn/signin/' );
 	}
 	
