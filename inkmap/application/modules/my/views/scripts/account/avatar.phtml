@@ -1,0 +1,88 @@
+<!-- begin -->
+<link rel="stylesheet" href="/styles/jquery.Jcrop.css" type="text/css" />
+<script type="text/javascript" src="/scripts/jquery.Jcrop.js"></script>
+<style type="text/css">
+.crop_preview{position:absolute; left:420px; top:335px; width:150px; height:150px; overflow:hidden;}
+</style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#cropbox").Jcrop({
+			aspectRatio:1,
+			onChange:showCoords,
+			onSelect:showCoords
+		});	
+		//简单的事件处理程序，响应自onChange,onSelect事件，按照上面的Jcrop调用
+		function showCoords(obj){
+			$("#x").val(obj.x);
+			$("#y").val(obj.y);
+			$("#w").val(obj.w);
+			$("#h").val(obj.h);
+			if(parseInt(obj.w) > 0){
+				//计算预览区域图片缩放的比例，通过计算显示区域的宽度(与高度)与剪裁的宽度(与高度)之比得到
+				var rx = $("#preview_box").width() / obj.w; 
+				var ry = $("#preview_box").height() / obj.h;
+				//通过比例值控制图片的样式与显示
+				$("#crop_preview").css({
+					width:Math.round(rx * $("#cropbox").width()) + "px",	//预览图片宽度为计算比例值与原图片宽度的乘积
+					height:Math.round(rx * $("#cropbox").height()) + "px",	//预览图片高度为计算比例值与原图片高度的乘积
+					marginLeft:"-" + Math.round(rx * obj.x) + "px",
+					marginTop:"-" + Math.round(ry * obj.y) + "px"
+				});
+			}
+		}
+		$("#crop_submit").click(function(){
+			if(parseInt($("#x").val())){
+				$("#crop_form").submit();	
+			}else{
+				alert("要先在图片上划一个选区再单击确认剪裁的按钮哦！");	
+			}
+		});
+	});
+</script>
+
+<!-- end of head css and scripts -->
+
+<div id="mainShellCentered">
+<div id="pageTopCap"><!----></div>
+<div class="mantle" id="pageMantle"><!----></div>
+<div id="pageHeader">
+<?=$this->partial ( '/partials/_head.phtml', array ('title' => 'account', 'subject' => 'view partials' ) );?>
+<div class="mantle" id="pageHeaderMantle"><!----></div>
+<div id="pageHeaderContent"><!----></div>
+<div id="pageHeaderControls">
+<div class="controls clearfix"><!----></div>
+</div>
+</div>
+<div class="clearfix" id="main">
+<div class="clearfix navPane" id="group" style='width: 200px'>
+<?=$this->partial ( '/partials/_leftNav.phtml', array ('title' => 'account', 'subject' => 'view partials' ) );?>
+</div>
+<div class="clearfix contentPane" id="group_2">
+<?=$this->partial ( '/partials/_accountTab.phtml', array ('title' => 'avatar', 'subject' => 'view partials' ) );?>
+<div>
+当前头像为：
+<img src="<?php echo $this->avatar?>"/>
+</div>
+<?php echo $this->avatarForm;?>
+<?php if ($this->ifUpload==true){?>
+<div>
+		<!-- This is the image we're attaching Jcrop to -->
+		<img src="<?php echo $this->uploadPhoto?>" id="cropbox"/>
+        <span id="preview_box" class="crop_preview"><img id="crop_preview" src="<?php echo $this->uploadPhoto?>" /></span>
+		<!-- This is the form that our event handler fills -->
+		<form id="cropForm" name="cropForm" action="/my/account/avatar" method="post" onsubmit="return checkCoords();">
+			<input type="hidden" id="x" name="x" />
+			<input type="hidden" id="y" name="y" />
+			<input type="hidden" id="w" name="w" />
+			<input type="hidden" id="h" name="h" />
+			<input type="hidden" id="fileName" name="fileName" VALUE="<?php echo $this->uploadPhoto?>"/>
+			
+			<input type="submit" id="cropSubmit" name="cropSubmit" value="提交" />
+		</form>
+</div>
+<?php 
+}
+?>
+</div>
+</div>
+</div>

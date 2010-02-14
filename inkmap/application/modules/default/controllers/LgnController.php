@@ -30,15 +30,16 @@ class LgnController extends Zend_Controller_Action {
 			try {
 				$data = $signinForm->getValues ();
 				//get real password
-				$user = new Model_DbTable_User ();
+				$user = new Common_Model_DbTable_User ();
 				$getUser = $user->getUserByEmail ( $data ['email'] );
 				$salt = $getUser->salt;
 				$password = md5 ( $data ['password'] . $salt );
 				//set up the auth adapter, get the default db adapter
 				$db = Zend_Db_Table::getDefaultAdapter ();
 				//create the auth adapter
-				$config = new Zend_Config_Xml ( APPLICATION_PATH . '/configs/db.xml' );
-				$authAdapter = new Zend_Auth_Adapter_DbTable ( $db, 'users', $config->params->username, $config->params->password );
+				$config = new Zend_Config_Ini ( APPLICATION_PATH . '/configs/db.ini',"production");
+				$authAdapter = new Zend_Auth_Adapter_DbTable ( $db, 'users', 
+						$config->database->params->username, $config->database->params->password );
 				$authAdapter->setIdentityColumn ( "email" );
 				$authAdapter->setCredentialColumn ( "password" );
 				$authAdapter->setIdentity ( $data ['email'] );
@@ -53,7 +54,7 @@ class LgnController extends Zend_Controller_Action {
 					$storage->write ( $authAdapter->getResultRowObject ( null, 'password' ) );
 					//go to index page
 					//TODO: link to the former page
-					Zend_Session::rememberMe ( '315360000' );
+					Zend_Session::rememberMe ();
 					return $this->_redirect ( '/' );
 				} else {
 					throw new Exception ( "用户名或者密码不正确" );
@@ -95,10 +96,10 @@ class LgnController extends Zend_Controller_Action {
 		if ($this->getRequest ()->isPost () && $signupForm->isValid ( $_POST )) {
 			try {
 				$data = $signupForm->getValues ();
-				$newUser = new Model_DbTable_User ();
+				$newUser = new Common_Model_DbTable_User ();
 				$newUser->createUser ( $data ['email'], $data ['user_name'], $data ['password1'], $data ['role'] );
 				//get real password
-				$user = new Model_DbTable_User ();
+				$user = new Common_Model_DbTable_User ();
 				$getUser = $user->getUserByEmail ( $data ['email'] );
 				$salt = $getUser->salt;
 				$password = md5 ( $data ['password1'] . $salt );

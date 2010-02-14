@@ -1,0 +1,18 @@
+<div class="clearfix" id="pageTitlebar">
+<div class="breadcrumb"><!----></div>
+<div id="pageTitle">
+<h1>My Account</h1>
+</div>
+<div class="clearfix" id="pageSubTitle"><!----></div>
+<div class="tabShell" id="pageTabs">
+<div class="tabLinksShell">
+
+<a <?php if($this->title=='account') echo "class='Active'";?> href="/my/account/settings">我的账户</a>
+<a <?php if($this->title=='design') echo "class='Active'";?> href="/my/design">我的设计</a> 
+<a <?php if($this->title=='show') echo "class='Active'";?> href="/my/show">我的个人Show</a> 
+<a <?php if($this->title=='favorite') echo "class='Active'";?> href="/my/favorite">我的收藏</a> 
+<a <?php if($this->title=='mail') echo "class='Active'";?> href="/my/mail">我的信箱</a> 
+</div>
+
+</div>
+</div>

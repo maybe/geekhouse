@@ -16,6 +16,11 @@ class InkMap_Controller_Plugin_Acl extends Zend_Controller_Plugin_Abstract {
 		$acl->add ( new Zend_Acl_Resource ( 'default:lgn' ), 'default' );
 		$acl->add ( new Zend_Acl_Resource ( 'default:my' ), 'default' );
 		
+				/** Default module */
+		$acl->add ( new Zend_Acl_Resource ( 'my' ) );
+		$acl->add ( new Zend_Acl_Resource ( 'my:index' ), 'my' );
+		$acl->add ( new Zend_Acl_Resource ( 'my:account' ), 'my' );
+		
 		/** Admin module */
 		$acl->add ( new Zend_Acl_Resource ( 'admin' ) );
 		$acl->add ( new Zend_Acl_Resource ( 'admin:index' ), 'admin' );
@@ -23,11 +28,11 @@ class InkMap_Controller_Plugin_Acl extends Zend_Controller_Plugin_Abstract {
 		
 		/** Creating permissions */
 		$acl->allow ( 'guest', 'default' );
-		$acl->deny ( 'guest', 'default', 'my' );
 		
 		// users can also work with content
 		//$acl->allow('user', 'default:my');
 		$acl->allow ( 'user', 'default' );
+		$acl->allow("user","my");
 		// administrators can do anything
 		$acl->allow ( 'administrator', null );
 		

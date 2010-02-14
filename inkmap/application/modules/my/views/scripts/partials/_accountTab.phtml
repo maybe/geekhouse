@@ -1,0 +1,36 @@
+<style type="text/css">
+<!--
+@import "/scripts/dojo/dijit/themes/tundra/tundra.css";
+-->
+.tabLabel a:link { text-decoration: none;color: black}
+.tabLabel a:active { text-decoration:none;color: black}
+.tabLabel a:hover { text-decoration:none;color: black}
+.tabLabel a:visited { text-decoration: none;color: black}
+</style>
+
+<div id="tabContainer" class='nowrapTabStrip dijitTabContainerTop-tabs'>
+<div class="dijitTab <?php if ($this->title=="settings") {echo " dijitTabChecked dijitChecked";} ?>">
+<div class="dijitTabInnerDiv">
+<div class="dijitTabContent"><img alt=""
+	src="/scripts/dojo/dojo/resources/blank.gif" class="dijitTabButtonIcon"
+	style="width: 1px;"> <span class="tabLabel"
+	style="-moz-user-select: none;"><a href="/my/account/settings">修改资料</a></span></div>
+</div>
+</div>
+<div class=" dijitTab <?php if ($this->title=="avatar") {echo " dijitTabChecked dijitChecked";} ?>">
+<div class="dijitTabInnerDiv">
+<div class="dijitTabContent"><img alt=""
+	src="/scripts/dojo/dojo/resources/blank.gif" class="dijitTabButtonIcon"
+	style="width: 1px;"> <span class="tabLabel"
+	style="-moz-user-select: none;"><a href="/my/account/avatar">修改头像</a></span></div>
+</div>
+</div>
+<div class="dijitTab <?php if ($this->title=="password") {echo " dijitTabChecked dijitChecked";} ?>">
+<div class="dijitTabInnerDiv">
+<div class="dijitTabContent"><img alt=""
+	src="/scripts/dojo/dojo/resources/blank.gif" class="dijitTabButtonIcon"
+	style="width: 1px;"> <span class="tabLabel"
+	style="-moz-user-select: none;"><a href="/my/account/password">修改密码</a></span></div>
+</div>
+</div>
+</div>
