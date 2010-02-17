@@ -49,11 +49,8 @@ function submitForm(){
 </div>
 </div>
 <div class="clearfix" id="main">
-<div class="clearfix navPane" id="group" style='width: 200px'>
 <?=$this->partial ( '/partials/_leftNav.phtml', array ('title' => 'account', 'subject' => 'view partials' ) );?>
-</div>
-<div class="clearfix contentPane" id="group_2">
-
+<div style="display:block-inline;width:650px;float:left">
 <?=$this->partial ( '/partials/_accountTab.phtml', array ('title' => 'settings', 'subject' => 'view partials' ) );?>
 <!-- form start -->
 <form accept-charset="UTF-8" action="/my/account/settings" method="post">
