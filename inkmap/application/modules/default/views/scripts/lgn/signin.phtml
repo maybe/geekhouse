@@ -1,3 +1,99 @@
+<script type="text/javascript">
+
+$(document).ready(function() {
+	emailBind($('#email'));
+	passwordBind($('#password'));
+	submitBind($('#submit'));
+});
+
+function emailBind(obj){
+	obj.bind('focus', function(){
+		resetError($(this));
+		var passValue = $(this).val();  
+		if(passValue.length>0 && isValidMail(passValue)==false){
+			showTooltip($(this),"用户名格式不对鸟～");
+		}
+	});
+	obj.bind('keyup', function(){
+		hideTooltip();
+	});
+	obj.bind('blur',function(){
+		var passValue = $(this).val();  
+		if(isValidMail(passValue)==false && passValue.length>0){
+			setError($(this));
+		}
+		hideTooltip();
+	});
+};
+function passwordBind(obj){
+	obj.bind('focus', function(){
+		resetError($(this));
+		var passValue = $(this).val();  
+		if(passValue.length<6 && passValue.length>0){
+			showTooltip($(this),"长度太短鸟～");
+		}
+	});
+	obj.bind('keyup', function(){
+		var passValue = $(this).val();  
+			hideTooltip();
+	});
+	obj.bind('blur',function(){
+		var passValue = $(this).val();  
+		if(passValue.length<=5 && passValue.length>0){
+			setError($(this));
+		}
+		hideTooltip();
+	});
+};
+function submitBind(obj){
+	obj.bind('click',function(){
+		var email = $('#email').val(); 
+		var password = $('#password').val();  
+		if(password.length<6 || isValidMail(email)==false){
+			return false;
+		}
+		else{
+			$('#password').submit();
+		}	
+	});
+};
+
+function setError(obj) {
+	obj.attr('class','error');
+};
+function resetError(obj) {
+	obj.attr('class','');
+};
+function showTooltip(obj,message){
+	var a = obj.offset();
+	var top=a.top-10;
+	var left=a.left+obj.width()+20;
+	$("#tipContent").html(message);
+	$("#errorTooltip").attr("style","top: "+top+"px; left: "+left+"px; opacity: 1;");
+};
+function hideTooltip(){
+	$("#errorTooltip").attr('style','');
+};
+
+function isValidMail(sText) {
+	 var reMail = /^(?:[a-z\d]+[_\-\+\.]?)*[a-z\d]+@(?:([a-z\d]+\-?)*[a-z\d]+\.)+([a-z]{2,})+$/i;
+	 return reMail.test(sText);
+};
+
+</script>
+<style type="text/css">
+.formRow {
+	height: 40px;
+}
+
+.formLabel {
+	color: black;
+	display: inline-block;
+	width: 80px
+}
+</style>
+
+
 <?php
 $this->headTitle()->append(' - Sign In');
 ?>
@@ -8,11 +104,11 @@ $this->headTitle()->append(' - Sign In');
 <div class="clearfix navPane" id="group_1"></div>
 <div class="clearfix contentPane" id="group_2">
 
-<div class="mantle" id="contentPaneMantle"><!----></div>
-<div class="controls clearfix"><!----></div>
+<div class="mantle" id="contentPaneMantle"></div>
+<div class="controls clearfix"></div>
 
 <div class="gridShell styleBoxShell">
-<div class="gridCell">
+<div class="gridCell" style="width:400px;height:330px">
 <div class="styleBox">
 
 <h2>快速注册</h2>
@@ -20,12 +116,11 @@ $this->headTitle()->append(' - Sign In');
 <div class="hr"></div>
 <p>崭新的InkMap之旅从这里开始...</p>
 <div class="buttonDiv"><a title="Continue" class="button  submit"
-	href="/lgn/signup"
-	id="page_register"><span class="buttonLeft"><span class="buttonRight">注册</span></span></a>
+	href="/lgn/signup" id="page_register"><span class="buttonLeft"><span
+	class="buttonRight">注册</span></span></a></div>
 </div>
 </div>
-</div>
-<div class="gridCell" id="page-signinShell">
+<div class="gridCell" id="page-signinShell" style="width:400px;height:330px">
 <div class="styleBox">
 
 <h2>我已经有帐号</h2>
@@ -41,9 +136,13 @@ if($this->loginMessage){
 </div>
 </div>
 
-<div class="controls clearfix"><!----></div>
+
+<div class="controls clearfix"></div>
 
 </div>
 <div class="clearfix infoPane" id="group_3"></div>
-<div class="clearfix bottomPane" id="group_4"><!----></div>
+<div class="clearfix bottomPane" id="group_4"></div>
 </div>
+
+<!--render tooltip -->
+<?=$this->partial ('/partials/_toolTip.phtml');?>

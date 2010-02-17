@@ -1,32 +1,4 @@
-@CHARSET "UTF-8";
-
-#backgroundpromo {
-    background: #FFFB9C;
-    font-size: 14px !important;
-    color: #000 !important;
-    position: relative;
-    font-weight: bold;
-    text-align: center;
-}
-
-.headerEmph {
-    color: #d41a27;
-    font-size: 14px;
-}
-
-#backgroundpromo a.details {
-    font-size: 11px;
-    font-weight: normal;
-}
-
-.useCode {
-    font-size: 12px;
-}
-
-#backgroundpromo a.smallLink {
-    font-size: 12px;
-}
-
-#backgroundpromo a.largeLink {
-    font-size: 14px;
+input[type = submit] {
+    border: 1px solid #808080;
+	height:25px;
 }

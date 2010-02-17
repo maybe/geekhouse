@@ -43,4 +43,74 @@ class Common_Model_DbTable_User extends Zend_Db_Table_Abstract {
 		}
 	
 	}
+	
+	public function updateAvatar($id, $path) {
+		$id = ( int ) $id;
+		$row = $this->fetchRow ( 'id = ' . $id );
+		if (! $row) {
+			throw new Exception ( "无此用户！" );
+		}
+		$row->avatar = $path;
+		$row->save ();
+		return $row;
+	}
+	
+	/*
+	 * update the information
+	 * */
+	public function updateInfo($id, $cell, $city, $gender, $age, $introduction, $website, $subscribe, $im_account) {
+		$row = $this->fetchRow ( 'id = ' . $id );
+		if (! $row) {
+			throw new Exception ( "无此用户！" );
+		}
+		$row->cell = $cell;
+		$row->city = $city;
+		if ($gender == null || $gender=="none") {
+			$row->gender = null;
+		} else if ($gender == "male") {
+			$row->gender = true;
+		} else {
+			$row->gender = false;
+		}
+		$row->age = $age;
+		$row->introduction = $introduction;
+		$row->website = $website;
+		if ($subscribe == "true") {
+			$row->subscribe = true;
+		}
+		else{
+			$row->subscribe = false;
+		}
+		$row->im_account = $im_account;
+		$row->save ();
+		return $row;
+	}
+	
+	/*
+	 * update the password
+	 * */
+	public function updatePass($id, $salt, $password) {
+		$pass = md5 ( $password . $salt );
+		$row = $this->fetchRow ( 'id = ' . $id );
+		if (! $row) {
+			throw new Exception ( "无此用户！" );
+		}
+		$row->password = $pass;
+		$row->save ();
+		return $row;
+	}
+	
+	/*
+	 * validate the password
+	 * */
+	public function validatePass($id, $salt, $password) {
+		$id = ( int ) $id;
+		$pass = md5 ( $password . $salt );
+		$row = $this->fetchRow ( 'id =' . $id . ' and password="' . $pass . '"' );
+		if (! $row) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 }

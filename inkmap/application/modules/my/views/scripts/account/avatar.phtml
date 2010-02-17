@@ -6,11 +6,13 @@
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
+		$("#crop_preview").attr("src","<?php echo $this->uploadPhoto?>");
+		
 		$("#cropbox").Jcrop({
 			aspectRatio:1,
 			onChange:showCoords,
 			onSelect:showCoords
-		});	
+		});
 		//简单的事件处理程序，响应自onChange,onSelect事件，按照上面的Jcrop调用
 		function showCoords(obj){
 			$("#x").val(obj.x);

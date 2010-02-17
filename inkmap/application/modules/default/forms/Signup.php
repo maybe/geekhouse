@@ -12,8 +12,8 @@ class  Form_Signup extends Zend_Dojo_Form
 			
 		// EMAIL
 		$this->addElement(
-                 'ValidationTextBox',   
-                 'email',   
+                 'ValidationTextBox', 
+                 'email', 
 		array(
                   'value'      => '',  
                   'label'      => 'Email address : ',  

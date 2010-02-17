@@ -1,18 +1,16 @@
 <?php
 
-class  Form_Signin extends Zend_Dojo_Form
+class  Form_Signin extends Zend_Form
 {
 	public function init()
 	{
-		// Dojo-enable the form:
-		Zend_Dojo::enableForm($this);
-		$this->setName('Login');
+		$this->setName('login');
 		$this->setAction('/lgn/signin')
 		->setMethod('post');
 			
 		// EMAIL
 		$this->addElement(
-                 'TextBox',   
+                 'Text',   
                  'email',   
 		array(
                   'value'      => '',  
@@ -21,7 +19,6 @@ class  Form_Signin extends Zend_Dojo_Form
                   'lowercase'  => true,  
                   'required'   => true,  
                   'regExp'     => '^.{6,}$',  
-                  'invalidMessage' => '邮箱太短！',  
                   'validators' => array(  
                         'EmailAddress',  
 						array('StringLength', false, 6)
@@ -33,21 +30,20 @@ class  Form_Signin extends Zend_Dojo_Form
 			
 		// PASSWORD
 		$this->addElement(
-       		'PasswordTextBox',   
+       		'Password',   
        		'password',   
 			array(
            		'label'          => '密码 : ',  
            		'required'       => true,  
            		'trim'           => true,  
-           		'regExp'         => '^.{4,}$',  
-           		'invalidMessage' => '密码太短！',  
-        		'validators'  => array(array('StringLength', false, 4))
+           		'regExp'         => '^.{6,}$',  
+        		'validators'  => array(array('StringLength', false, 6))
 			)
 		);
 			
 		// SUBMIT
 		$this->addElement(
-       		'SubmitButton',   
+       		'Submit',   
        		'submit',   
 			array(
            		'required'   => false,  

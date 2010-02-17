@@ -23,6 +23,13 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 			)
 		);
 	}
+	
+	protected function _initView() {
+		$view = new Zend_View();
+		$view->addScriptPath(APPLICATION_PATH.'/common/views/scripts/');
+		$viewRenderer = new Zend_Controller_Action_Helper_ViewRenderer($view);
+		Zend_Controller_Action_HelperBroker::addHelper($viewRenderer);
+	}
 }
 
 

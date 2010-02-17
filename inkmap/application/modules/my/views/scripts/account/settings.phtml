@@ -1,4 +1,41 @@
-
+<script type="text/javascript">
+function showAddImField(){
+	$("#imField").hide();
+	$("#addImField").show();
+}
+function hideAddImField(){
+	$("#addImField").hide();
+	$("#imField").show();
+}
+function addIm(){
+	var value=jQuery.trim($("#addImField :text").val());
+	var selectValue=$("#imType").val();
+	if(value!=""){
+		var count = $("#imField :text").length+1;
+		$("#imField").append('<div id="imRow'+count+'"><label>'+selectValue+'</label>'+
+				'<input id="imType'+count+'" name="imType'+count+'" type="hidden" value="'+selectValue+'">'+
+				'<input id="imValue'+count+'" type="text" name="imValue'+count+'" value="'+value+'" style="width:100px;">'+
+				'<a onclick="deleteIm(\'imRow'+count+'\')">删除</a></div>'
+				);
+		$("#imCount").val(count);
+		hideAddImField();
+	}
+}
+function deleteIm(name){
+	$('#'+name).remove();
+	$("#imCount").val($("#imCount").val()-1);
+}
+function submitForm(){
+	
+}
+</script>
+<style>
+<!--
+.formContent{
+	margin:10px;
+}
+-->
+</style>
 
 <div id="mainShellCentered">
 <div id="pageTopCap"><!----></div>
@@ -18,10 +55,83 @@
 <div class="clearfix contentPane" id="group_2">
 
 <?=$this->partial ( '/partials/_accountTab.phtml', array ('title' => 'settings', 'subject' => 'view partials' ) );?>
-
+<!-- form start -->
+<form accept-charset="UTF-8" action="/my/account/settings" method="post">
+<div id="cellContent" class="formContent">
+<h4>手机号码：</h4>
+<input id="cell" type="text" name="cell" value="<?php echo $this->cell;?>" maxlength="11" style="width:100px;" />
+</div>
+<div id="cityContent" class="formContent">
+<h4>城市 : </h4>
+<input id="city" type="text" name="city" value="<?php echo $this->city;?>" style="width:100px;" />
+</div>
+<div id="genderContent" class="formContent">
+<h4>性别 : </h4>
+<INPUT TYPE=RADIO NAME="gender" VALUE="male" <?php if( $this->gender==true){echo "checked";}?>>男&nbsp;&nbsp;
+<INPUT TYPE=RADIO NAME="gender" VALUE="female" <?php if( $this->gender==false){echo "checked";}?>>女&nbsp;&nbsp;
+<INPUT TYPE=RADIO NAME="gender" VALUE="none" <?php if( $this->gender==null){echo "checked";}?>>保密
+</div>
+<div id="ageContent" class="formContent">
+<h4>年龄 : </h4>
+<input id="age" type="text" name="age" value="<?php echo $this->age;?>" maxlength="3" style="width:100px;" />
+</div>
+<div id="imContent" class="formContent">
+<h4>如果你有sns帐号像是qq，twitter : </h4>
+<div id="imField" style="display:block;">
+<a href="javascript:;" onclick="showAddImField()">添加</a>
+<input id="imCount" type="hidden" name="imCount" value="<?php if($this->im!=null) {echo count($this->im);} ?>" />
+<?php 
+if($this->im!=null){
+for ($i=0;$i<count($this->im);$i++){
+	$type =  $this->im[$i][0];
+	$account = $this->im[$i][1];
+?>
+<div id="imRow<?php echo $i+1; ?>">
+<label><?php echo $type?></label>
+<input id="imType<?php echo $i+1;?>" name="imType<?php echo $i+1;?>" type="hidden" value="<?php echo $type?>">
+<input id="imValue<?php echo $i+1;?>" type="text" name="imValue<?php echo $i+1;?>" value="<?php echo $account;?>" style="width:100px;">
+<a onclick="deleteIm('imRow<?php echo $i+1;?>')">删除</a></div>
+<?php
+}
+}
+?>
+</div>
+<div id="addImField" style="width:200px;height:100px;border:1px solid black;display:none;">
+<select id="imType" >
+<option>qq</option>
+<option selected="selected">twitter</option>
+<option>msn</option>
+</select>
+<input id="imText" type="text" name="imText" value="" style="width:100px;"><br>
+<a onclick="addIm()">确定</a>
+<a onclick="hideAddImField()">取消</a>
+</div>
+</div>
+<div id="introductionContent" class="formContent">
+<h4>请输入一些个人简介来让别人更好的了解您：</h4>
+<TEXTAREA NAME="introduction" COLS=40 ROWS=6><?php echo $this->introduction;?></TEXTAREA>
+</div>
+<div id="websiteContent" class="formContent">
+<h4>如果您有个人主页或者Blog：</h4>
+<label for="website">WebSite : </label>
+<input id="website" type="text" name="website" value="<?php echo $this->website;?>" style="width:250px;" />
+</div>
+<div id="subscribeContent" class="formContent">
+<h4>是否接受邮件：</h4>
+<input id="subscribe" type="checkbox" name="subscribe" value="true" <?php if($this->subscribe==true) echo 'checked="checked"';?>  />&nbsp;
+您将不定期的收到InkMap的最新通告和打折信息。
+</div>
+<div id="submitContent" class="formContent">
+<input id="submit" type="submit" name="submit" value="保存" onclick="submitForm()">
+</div>
+</form>
+<!-- form end -->
 
 <div class="mantle" id="contentPaneMantle"><!----></div>
 <div class="controls clearfix"><!----></div>
 </div>
 </div>
 </div>
+
+<!--render tooltip -->
+<?=$this->partial ( '/partials/_toolTip.phtml');?>

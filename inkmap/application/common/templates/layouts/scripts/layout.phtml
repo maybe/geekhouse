@@ -11,21 +11,18 @@ $this->layout()->userForm = $this->action('index', 'lgn');
 <?php
 $this->headTitle()->setPrefix('Ink Map');
 echo $this->headTitle();
-if ($this->dojo()->isEnabled()){
-	$this->dojo()->setLocalPath('/scripts/dojo/dojo/dojo.js')
-	->addStyleSheetModule('dijit.themes.tundra');
-	echo $this->dojo();
-}
-//$this->headScript()->setScript('/scripts/jquery.js');
-//$this->headScript()->appendScript('/scripts/jquery.Jcrop.js');
+$this->headScript()->setFile('/scripts/standard.js');
+$this->headScript()->appendFile('/scripts/jquery-1.4.1.js');
 echo $this->headScript();
-$this->headLink()->appendStylesheet('/styles/jquery.Jcrop.css');
+
+$this->headLink(array('rel' => 'favicon','href' => '/images/favicon.ico'),'PREPEND');
+$this->headLink()->setStylesheet('/styles/default/footer.css');
+$this->headLink()->appendStylesheet('/styles/default/head.css');
+$this->headLink()->appendStylesheet('/styles/layout.css');
+$this->headLink()->appendStylesheet('/scripts/dojo/dijit/themes/tundra/tundra.css');
+
 echo $this->headLink();
 ?>
-<link rel="stylesheet" type="text/css" href="https://www.zazzle.com/css/default.zss/r-1112b1a123efb1848b078527bb19afe5.css?lang=Default&zcur=USD&oh=www.zazzle.com" />
-<link rel="stylesheet" type="text/css" href="https://www.zazzle.com/css/skins/default.zss/r-1912c402af35431367b05335858d558e.css?lang=Default&zcur=USD&oh=www.zazzle.com" />	
-<link rel="Shortcut Icon" href="/images/favicon.ico">
-<script type="text/javascript" src="/scripts/jquery-1.4.1.js"></script>
 </head>
 
 <body class='tundra'>

@@ -1,10 +1,10 @@
-/* (c) 2010 Zazzle.com, Inc. */
+/* (c) 2010 Zazzle Inc. */
 body {
-    background: url(http://asset.zcache.com/assets/graphics/z2/skins/default/pageBgTile_v2.gif) top left repeat-x #fff;
+    background: url(https://www.zazzle.com/assets/graphics/z2/skins/default/pageBgTile_v2.gif) top left repeat-x #fff;
 }
 
 body.zBarred #page {
-    background: url(http://asset.zcache.com/assets/graphics/z2/skins/default/pageBgTile_v2.gif) top left repeat-x #fff;
+    background: url(https://www.zazzle.com/assets/graphics/z2/skins/default/pageBgTile_v2.gif) top left repeat-x #fff;
     background-position: 0 -30px;
 }
 
@@ -36,7 +36,7 @@ body.zBarred #page {
 }
 
 .promoClass, tr.promoClass td {
-    background: #ddd url("http://asset.zcache.com/assets/graphics/z2/skins/default/highlightBg_v3.gif") top left repeat-x;
+    background: #ddd url("https://www.zazzle.com/assets/graphics/z2/skins/default/highlightBg_v3.gif") top left repeat-x;
     color: #000;
 }
 
@@ -54,20 +54,20 @@ body.zBarred #page {
 }
 
 .hr {
-    background-image: url(http://www.zazzle.com/rlv/isapi/designall.dll?action=getimage&w=2&h=7&fill_color=eeeeee&bdr_color=eeeeee&bdr=TLRB&bdr_width=1&grd=0&opacity=100&fmt=gif);
+    background-image: url(https://www.zazzle.com/rlv/isapi/designall.dll?action=getimage&w=2&h=7&fill_color=eeeeee&bdr_color=eeeeee&bdr=TLRB&bdr_width=1&grd=0&opacity=100&fmt=gif);
 }
 
 .hrVert {
-    background-image: url(http://www.zazzle.com/rlv/isapi/designall.dll?action=getimage&w=3&h=3&fill_color=eeeeee&bdr_color=ffffff&bdr=TLRB&bdr_width=1&grd=0&opacity=100&fmt=gif);
+    background-image: url(https://www.zazzle.com/rlv/isapi/designall.dll?action=getimage&w=3&h=3&fill_color=eeeeee&bdr_color=ffffff&bdr=TLRB&bdr_width=1&grd=0&opacity=100&fmt=gif);
 }
 
 .tabShell, .zDialogContent .tabShell {
-    background: url(http://www.zazzle.com/rlv/isapi/designall.dll?action=getimage&w=2&h=1&fill_color=dddddd&bdr_color=dddddd&bdr=TLRB&bdr_width=0&grd=0&opacity=100&fmt=gif) transparent bottom left repeat-x;
+    background: url(https://www.zazzle.com/rlv/isapi/designall.dll?action=getimage&w=2&h=1&fill_color=dddddd&bdr_color=dddddd&bdr=TLRB&bdr_width=0&grd=0&opacity=100&fmt=gif) transparent bottom left repeat-x;
 }
 
 .tabShell a, .zDialogContent .tabShell a {
     border-color: #ddd;
-    background: url(http://www.zazzle.com/rlv/isapi/designall.dll?action=getimage&w=2&h=1&fill_color=dddddd&bdr_color=dddddd&bdr=TLRB&bdr_width=0&grd=0&opacity=100&fmt=gif) #fafafa bottom left repeat-x;
+    background: url(https://www.zazzle.com/rlv/isapi/designall.dll?action=getimage&w=2&h=1&fill_color=dddddd&bdr_color=dddddd&bdr=TLRB&bdr_width=0&grd=0&opacity=100&fmt=gif) #fafafa bottom left repeat-x;
     color: #7d7d7d;
 }
 
@@ -78,12 +78,12 @@ body.zBarred #page {
 
 input[type = text], input[type = password], textarea {
     border: 1px solid #808080;
-    background: url(http://asset.zcache.com/assets/graphics/z2/skins/default/inputs/gradient_v2.gif) top left repeat-x #fff;
+    background: url(https://www.zazzle.com/assets/graphics/z2/skins/default/inputs/gradient_v2.gif) top left repeat-x #fff;
     color: #666
 }
 
 input[ type = text]:focus, input[type = password]:focus, textarea:focus {
-    background: #f1f8fe url(http://asset.zcache.com/assets/graphics/z2/skins/default/inputFocusBg_v2.gif) top left repeat-x;
+    background: #f1f8fe url(https://www.zazzle.com/assets/graphics/z2/skins/default/inputFocusBg_v2.gif) top left repeat-x;
     color: #000;
     border: 1px solid #237bc3
 }
@@ -95,7 +95,7 @@ input::-moz-selection, textarea::-moz-selection {
 
 input[type = text].error, input[type = password].error, textarea.error {
     border: 1px solid #c00;
-    background: url(http://asset.zcache.com/assets/graphics/z2/skins/default/inputs/errorGradient.gif) top left repeat-x #fffcfc;
+    background: url(https://www.zazzle.com/assets/graphics/z2/skins/default/inputs/errorGradient.gif) top left repeat-x #fffcfc;
     color: #c00;
 }
 
@@ -123,15 +123,15 @@ a.strong, a.strong:active {
 }
 
 .moreLink, a.moreLink {
-    background-image: url(http://asset.zcache.com/assets/graphics/z2/icons/forwardArrow.gif);
+    background-image: url(https://www.zazzle.com/assets/graphics/z2/icons/forwardArrow.gif);
 }
 
 .backLink, a.backLink {
-    background-image: url(http://asset.zcache.com/assets/graphics/z2/icons/backArrow.gif);
+    background-image: url(https://www.zazzle.com/assets/graphics/z2/icons/backArrow.gif);
 }
 
 .topLink, a.topLink {
-    background-image: url(http://asset.zcache.com/assets/graphics/z2/icons/topArrow.gif);
+    background-image: url(https://www.zazzle.com/assets/graphics/z2/icons/topArrow.gif);
 }
 
 h1, h2, h3, h4, h5 {
@@ -220,17 +220,17 @@ h1, h2, h3, h4, h5 {
 
 .thermometerShell a, .thermometerShell span {
     color: #000;
-    background-image: url(http://asset.zcache.com/assets/graphics/z2/skins/default/thermometer/normal_v2.gif);
+    background-image: url(https://www.zazzle.com/assets/graphics/z2/skins/default/thermometer/normal_v2.gif);
 }
 
 .thermometerShell .thermometerStepDisabled {
     color: #bac7d6;
-    background-image: url(http://asset.zcache.com/assets/graphics/z2/skins/default/thermometer/disabled_v2.gif);
+    background-image: url(https://www.zazzle.com/assets/graphics/z2/skins/default/thermometer/disabled_v2.gif);
 }
 
 .thermometerShell .thermometerStepActive {
     color: #fff;
-    background-image: url(http://asset.zcache.com/assets/graphics/z2/skins/default/thermometer/active_v2.gif);
+    background-image: url(https://www.zazzle.com/assets/graphics/z2/skins/default/thermometer/active_v2.gif);
 }
 
 .loadingOverlayShield {
@@ -242,7 +242,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .loadingOverlay .loadingIndicator {
-    background: url(http://asset.zcache.com/assets/graphics/design/progressPopup/progressbar.gif);
+    background: url(https://www.zazzle.com/assets/graphics/design/progressPopup/progressbar.gif);
 }
 
 #returnStrip {
@@ -281,7 +281,7 @@ h1, h2, h3, h4, h5 {
     top: 7px;
     width: 9px;
     height: 9px;
-    background-image: url(http://rlv.zcache.com/isapi/designall.dll?action=getimage&bg_color=00ffffff&fmt=gif&gry=1&gry_color=555555&gry_ref=140&id=tmpl/arrow_down.gif);
+    background-image: url(https://www.zazzle.com/rlv/isapi/designall.dll?action=getimage&bg_color=00ffffff&fmt=gif&gry=1&gry_color=555555&gry_ref=140&id=tmpl/arrow_down.gif);
 }
 
 .categoryList {
@@ -290,7 +290,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .categoryList .categoryListShadow {
-    background: transparent url(http://asset.zcache.com/assets/graphics/z2/skins/default/categoryTitleShadow.gif) top left repeat-x;
+    background: transparent url(https://www.zazzle.com/assets/graphics/z2/skins/default/categoryTitleShadow.gif) top left repeat-x;
     margin: 0;
     padding-top: 7px;
     color: #4b4b4b;
@@ -340,7 +340,7 @@ h1, h2, h3, h4, h5 {
 .categoryList .categoryArrow {
     height: 17px;
     width: 17px;
-    background: transparent url(http://asset.zcache.com/assets/graphics/z2/skins/default/circleArrow.gif) top left no-repeat;
+    background: transparent url(https://www.zazzle.com/assets/graphics/z2/skins/default/circleArrow.gif) top left no-repeat;
     display: block;
     position: absolute;
     right: 5px;
@@ -419,43 +419,43 @@ h1, h2, h3, h4, h5 {
 }
 
 #group_1 .categoryTitleShell {
-    background: transparent url(http://asset.zcache.com/assets/graphics/z2/skins/default/categoryTitleBgLeftRepeat.gif) top left repeat-y;
+    background: transparent url(https://www.zazzle.com/assets/graphics/z2/skins/default/categoryTitleBgLeftRepeat.gif) top left repeat-y;
 }
 
 #group_1 .categoryTitleShell h3 {
-    background: transparent url(http://asset.zcache.com/assets/graphics/z2/skins/default/categoryTitleBgLeftTop.gif) top left no-repeat;
+    background: transparent url(https://www.zazzle.com/assets/graphics/z2/skins/default/categoryTitleBgLeftTop.gif) top left no-repeat;
 }
 
 #group_1 .categoryList a.categoryTitleShell:hover {
-    background: transparent url(http://asset.zcache.com/assets/graphics/z2/skins/default/categoryTitleBgLeftRepeat.gif) top right repeat-y;
+    background: transparent url(https://www.zazzle.com/assets/graphics/z2/skins/default/categoryTitleBgLeftRepeat.gif) top right repeat-y;
 }
 
 #group_1 .categoryList a.categoryTitleShell:hover h3 {
-    background: transparent url(http://asset.zcache.com/assets/graphics/z2/skins/default/categoryTitleBgLeftTop.gif) top right no-repeat;
+    background: transparent url(https://www.zazzle.com/assets/graphics/z2/skins/default/categoryTitleBgLeftTop.gif) top right no-repeat;
 }
 
 #group_1 .categoryList a.categoryTitleShell:hover .categoryArrow {
-    background: transparent url(http://asset.zcache.com/assets/graphics/z2/skins/default/circleArrow.gif) top right no-repeat;
+    background: transparent url(https://www.zazzle.com/assets/graphics/z2/skins/default/circleArrow.gif) top right no-repeat;
 }
 
 #group_3 .categoryTitleShell {
-    background: transparent url(http://asset.zcache.com/assets/graphics/z2/skins/default/categoryTitleBgRightRepeat.gif) top left repeat-y;
+    background: transparent url(https://www.zazzle.com/assets/graphics/z2/skins/default/categoryTitleBgRightRepeat.gif) top left repeat-y;
 }
 
 #group_3 .categoryTitleShell h3 {
-    background: transparent url(http://asset.zcache.com/assets/graphics/z2/skins/default/categoryTitleBgRightTop.gif) top left no-repeat;
+    background: transparent url(https://www.zazzle.com/assets/graphics/z2/skins/default/categoryTitleBgRightTop.gif) top left no-repeat;
 }
 
 #group_3 .categoryList a.categoryTitleShell:hover {
-    background: transparent url(http://asset.zcache.com/assets/graphics/z2/skins/default/categoryTitleBgRightRepeat.gif) top right repeat-y;
+    background: transparent url(https://www.zazzle.com/assets/graphics/z2/skins/default/categoryTitleBgRightRepeat.gif) top right repeat-y;
 }
 
 #group_3 .categoryList a.categoryTitleShell:hover h3 {
-    background: transparent url(http://asset.zcache.com/assets/graphics/z2/skins/default/categoryTitleBgRightTop.gif) top right no-repeat;
+    background: transparent url(https://www.zazzle.com/assets/graphics/z2/skins/default/categoryTitleBgRightTop.gif) top right no-repeat;
 }
 
 #group_3 .categoryList a.categoryTitleShell:hover .categoryArrow {
-    background: transparent url(http://asset.zcache.com/assets/graphics/z2/skins/default/circleArrow.gif) top right no-repeat;
+    background: transparent url(https://www.zazzle.com/assets/graphics/z2/skins/default/circleArrow.gif) top right no-repeat;
 }
 
 .fleetingMessageShell {
@@ -478,24 +478,4 @@ h1, h2, h3, h4, h5 {
 
 #footer a:hover {
     color: #69f;
-}
-
-#footerContent {
-    clear: both;
-    margin: 9px auto;
-    width: 900px;
-}
-
-#footer .footerMain {
-    float: left;
-    width: 617px;
-    padding-left: 18px;
-}
-
-#footer .signupColumn {
-    margin: 0;
-    width: 230px;
-    font-size: 11px;
-    float: left;
-    padding-left: 30px;
 }

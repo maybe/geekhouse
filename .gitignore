@@ -3,3 +3,4 @@
 .project
 .settings/
 inkmap/public/images/captcha/*.*
+inkmap/public/images/user_avatar/*.*
