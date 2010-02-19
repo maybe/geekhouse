@@ -1,0 +1,80 @@
+/*
+	GENERAL
+*/
+*                                           { margin: 0; padding: 0; }
+html                                        { overflow-y: scroll; }
+body                                        { font: 14px Georgia, Serif; background: #444; }
+#main-content								{ width: 600px; margin: 20px auto; padding: 20px; background: white; -moz-border-radius: 20px; -moz-box-shadow: #222 5px 5px 5px; -webkit-border-radius: 20px; -webkit-box-shadow: #222 5px 5px 5px; position: relative; }
+pre                                         { width: 580px; overflow: auto; margin: 0 0 12px 0; padding: 10px; background: #eee; border: 1px solid #ccc; }
+code                                        { font: 11px Monaco, Courier, MonoSpace; }
+ul                                          { margin: 0 0 12px 30px; }
+
+/*
+	NAV
+*/
+#nav                                        { list-style: none; overflow: hidden; margin: 0 0 22px 0; }
+#nav li                                     { display: inline; }
+#nav li a                                   { display: block; float: left; padding: 8px; text-decoration: none; }
+#nav li a:hover,
+#calendar #nav li.cal a,
+#image #nav li.img a,
+#text #nav li.txt a,
+#use #nav li.use a,
+#double #nav li.dbl a                       { background: #444; color: white; }
+
+
+h1                                          { font: bold 40px Helvetica, Sans-Serif; letter-spacing: -1px; margin: 0 0 12px 0; }
+h2                                          { font: bold 30px Helvetica, Sans-Serif; letter-spacing: -1px; margin: 0 0 6px 0; }
+p                                           { margin: 0 0 12px 0; }
+
+#dl                                         { position: absolute; top: 15px; right: 15px; text-decoration: none; background: #222; color: white; -moz-border-radius: 4px; -webkit-border-radius: 4px; padding: 3px 8px; }
+#dl:hover                                   { background: #999; }
+
+
+
+/*
+	FOR THE MOVER
+*/
+#wrap, #wrap2   							{ width: 600px; position: relative; }
+#small, #small2								{ position: relative; width: 100%; }
+#large, #large2    							{ background: white; position: relative; width: 600px; }
+#mover, #mover2								{ position: absolute; top: 0; left: 0; width: 104px; height: 104px; overflow: hidden; z-index: 100; background: white; display: none; }
+#overlay, #overlay2							{ border: 1px solid blue; width: 102px; height: 102px; position: absolute; top: 0; left: 0; z-index: 200; }
+
+
+
+
+
+
+/*
+   FOR TEXT DEMO
+*/
+#small p 								    { font-size: 8px; }
+
+
+
+
+
+/*
+	CALENDAR SPECIFIC
+*/
+caption										{ background: #1634D8; padding: 3px; color: white; font: 13px Helvetica, Sans-Serif; text-transform: uppercase; letter-spacing: 1px; }
+.calendar 									{ font-size: 13px; }
+.calendar td, .calendar th					{ padding: 1px; border: 2px solid white; }
+.calendar td a                              { display: block; padding: 3px; background: #900; color: white; }
+#months-tables .calendar td a:hover,
+#months-tables .calendar td a[style]:hover  { background: black !important; text-decoration: none; }
+.day 										{ text-align: center }
+.past-day                                   { background-color: #eee; }
+#months-tables                              { width: 100%; }
+#months-tables  td                          { vertical-align: top; }
+td           								{ vertical-align: top; }
+.single-month 								{ padding-right: 10px; }
+#small .calendar 							{ font-size: 8px; }
+#small .calendar td, #small .calendar th 	{ width: 12px; height: 12px; border: 1px solid white; padding: 0; }
+#small .calendar td a 						{ padding: 0; display: block; width: 12px; height: 12px; } 
+#small .calendar td.day 					{ background: #eee; }
+#small .calendar td.past-day				{ background: #999; }
+#small a 									{ border: 0; }
+#small .months-tables 						{ width: auto; }
+#small caption 								{ font-size: 8px; white-space: nowrap; }

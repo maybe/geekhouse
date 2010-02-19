@@ -1,0 +1,216 @@
+<script type="text/javascript"
+	src="/scripts/jcarousel/lib/jquery.jcarousel.pack.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="/scripts/jcarousel/lib/jquery.jcarousel.css" />
+<link rel="stylesheet" type="text/css"
+	href="/scripts/jcarousel/skins/tango/skin.css" />
+<link rel="stylesheet" href="/scripts/jqzoom/css/jqzoom.css"
+	type="text/css">
+<script src="/scripts/jqzoom/js/jquery.jqzoom1.0.1.js"
+	type="text/javascript"></script>
+
+
+<script type="text/javascript">
+
+function mycarousel_itemLoadCallback(carousel, state)
+{
+    // Check if the requested items already exist
+    if (carousel.has(carousel.first, carousel.last)) {
+        return;
+    }
+
+    jQuery.get(
+        '/design/getitems',
+        {
+            first: carousel.first,
+            last: carousel.last
+        },
+        function(xml) {
+            mycarousel_itemAddCallback(carousel, carousel.first, carousel.last, xml);
+        },
+        'xml'
+    );
+};
+
+function mycarousel_itemAddCallback(carousel, first, last, xml)
+{
+    // Set the size of the carousel
+    carousel.size(parseInt(jQuery('total', xml).text()));
+    jQuery('image', xml).each(function(i) {
+        
+        carousel.add(first + i, mycarousel_getItemHTML(jQuery(this).text()));
+    });
+	loadImage(jQuery('image', xml).first().text());	
+};
+
+/**
+ * Item html creation helper.
+ */
+function mycarousel_getItemHTML(url)
+{
+	var url_m = url.replace(/_s.jpg/g, '_m.jpg');
+    return '<img src="' + url + '" width="75" height="75" alt="" onclick="loadImage(\''+url_m+'\');"/>';
+};
+
+function loadImage(img_url) {
+    $('#loader').addClass('loading');
+	//$('.jqzoom').remove();
+	$("#loader").html("<a href='' id='jqzoom' class='jqzoom'>");	  
+	var url_m = img_url.replace(/_s.jpg/g, '_m.jpg');
+	$("#jqzoom").attr("href",url_m);	
+    $('#jqzoom').html("<img src='"+url_m+"' />");
+    var options = {
+      zoomWidth: 100,
+      zoomHeight: 100,
+      xOffset: 10,
+      yOffset: 0,
+      lens: true,
+      title: false,
+      showEffect: "fadein",
+      fadeinSpeed: "slow",
+      hideEffect: "fadeout",
+      fadeoutSpeed: "slow",
+      showPreload: false,
+      position: "right"
+    };
+	$('#jqzoom').jqzoom(options);
+    var img = new Image();
+    $(img).load(function () {
+      $(this).hide();
+      $('#loader').removeClass('loading');
+      $(this).fadeIn();           
+    }).error(function () {
+    }).attr('src',url_m);
+    
+};
+
+
+
+$(document).ready(function() {
+    jQuery('#mycarousel').jcarousel({
+        itemLoadCallback: mycarousel_itemLoadCallback
+    });
+    
+});
+</script>
+<style type="text/css" media="screen">
+DIV#loader {
+	position: relative;
+	border: 1px solid #ccc;
+	width: 300px;
+	height: 300px;
+	overflow: hidden;
+}
+
+DIV#loader.loading {
+	background: url(/images/loader.gif) no-repeat center center;
+}
+
+#detail_leftPart{
+	float:left;
+	width:500px;
+}
+#detail_rightPart{
+	float:right;
+	width:350px;
+}
+</style>
+<!-- end of the tag -->
+
+<div class="clearfix" id='main'>
+
+<!-- left part begin -->
+
+<div id="detail_leftPart">
+<div id="loader" class=""><a href="" id="jqzoom" class='jqzoom'></a></div>
+<div id="mycarousel" class="jcarousel-skin-tango">
+<ul>
+	<!-- The content will be dynamically loaded in here -->
+</ul>
+</div>
+</div>
+<!-- left part end -->
+
+<!-- right part begin -->
+
+<div id="detail_rightPart">
+<form id="cart" name="cart" action="/my/account/settings" method="post">
+<h1>购买xxxx：</h1>
+<div id="size-container">
+	<h4>选择尺码:</h4>
+		<select id="sizeSelect" name="sizeSelect">
+			<option>XHTML</option>
+			<option>CSS</option>
+			<option>JAVASCRIPT</option>
+			<option>XML</option>
+			<option>PHP</option>
+			<option>C#</option>
+			<option>JAVA</option>
+			<option>C++</option>
+			<option>PERL</option>
+		</select>
+	<button value="查看尺码表" title="查看尺码表" class="inline" type="button" id="productAttributes-viewSizeChart"><span class="buttonLeft"><span class="buttonRight" id="productAttributes-viewSizeChart-text">查看尺码表</span></span></button>
+</div>
+
+
+	
+	
+
+<div id="productAttributes-addToCartPod">
+
+	<div id="productAttributes_quantity-container">
+		<h4 id="productAttributes-quantityLabel">Qty.</h4>
+		
+<div id="productAttributes_quantity-shell" class="droplistWithInputShell">
+	
+<a style="height: 22px; cursor: pointer;" href="javascript://" class="multiButton droplistWithInputButton" id="productAttributes_quantity_selector">
+	<img title="select quantity" src="http://asset.zcache.com/assets/graphics/s.gif" id="productAttributes_quantity_selector-frames" style="top: -22px;">
+</a>
+	<input type="text" maxlength="5" value="1" class="select quantityDroplistInput" id="productAttributes_quantity-input">
+	<div class="droplistShell below" id="productAttributes_quantity-palette">
+		<div class="droplist" id="productAttributes_quantity-options"><a class="multiButton droplistOption" id="productAttributes_quantity_option999" href="javascript://">88</a></div>
+	</div>
+</div>
+
+		<span id="productAttributes_quantity-unitLabel"></span>
+		
+		<span id="productAttributes-quantityDiscountMessage">As low as <span id="productAttributes-quantityDiscountAmount" style="display: inline;">$12.58</span>&nbsp;<a href="javascript://" id="productAttributes-quantityDiscountLink">in bulk!</a></span>
+        
+        
+		
+		<span id="productAttributes-inStock">In stock!</span>
+	</div>
+	
+	
+	<div id="productAttributes_addToCart-container">
+		<button value="Add to cart" title="Add to cart" class="submit" type="button" id="productAttributes_addToCart" style="cursor: pointer;"><span class="buttonLeft"><span class="buttonRight" id="productAttributes_addToCart-text">Add to cart</span></span></button>
+		<img style="display: none;" class="icon_medium icon_medium-warning" src="http://asset.zcache.com/assets/graphics/s.gif" id="product-warningIcon">
+	</div>
+
+	<div id="productAttributes-priceAndLowestSkuShell">
+		
+<div id="productAttributes_price-shell">
+	
+	<div id="productAttributes_price-original" style="display: none; right: 66px;">$19.35</div>
+	<div class="important" id="productAttributes_price" style="top: 0px;">$19.35</div>
+</div>
+		
+		<div id="productAttributes-lowestSkuShell" style="display: block;">
+			As low as <span id="productAttributes-lowestSkuAmount">$13.95</span>&nbsp;on a <a href="javascript://" id="productAttributes-lowestSkuName">Value T-Shirt</a>
+		</div>
+	</div>
+
+<div id="productAttributes-outOfStock">
+	<img height="33" alt="Temporarily out of stock" src="http://asset.zcache.com/assets/graphics/icons/alerts/medium/error_33.gif">
+	<span id="productAttributes-outOfStockAttribute"></span>
+	<span id="productAttributes-outOfStockAttribute2"></span>
+</div>
+</div>
+<script type="text/javascript">
+$productAttributes_quantity = {localized:{},minValue:1,value:1,values:[{name:1,display:1},{name:2,display:2},{name:3,display:3},{name:4,display:4},{name:5,display:5},{name:6,display:6},{name:7,display:7},{name:8,display:8},{name:9,display:9},{name:10,display:10},{name:20,display:20},{name:50,display:50},{name:100,display:100},{name:200,display:200},{name:500,display:500}]};
+</script>
+</form>
+
+</div>
+</div>
+

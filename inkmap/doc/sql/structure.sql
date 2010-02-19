@@ -174,7 +174,7 @@ CREATE TABLE stuff_type (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- 表的结构 `comments` 商品类型
+-- 表的结构 `comments` 商品评论
 --
 DROP TABLE IF EXISTS  comments;
 CREATE TABLE   comments (

@@ -190,4 +190,19 @@ class My_AccountController extends Zend_Controller_Action {
 			}
 		}
 	}
+	
+	/*
+	 * orders
+	 * */
+	public function ordersAction() {
+	
+	}
+	
+	/*
+	 * address
+	 * */
+	public function addressAction() {
+	
+	}
+	
 }

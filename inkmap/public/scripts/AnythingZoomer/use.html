@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>  
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+   
+   <title>Anything Zoomer | Usage</title>
+   
+   <link rel="stylesheet" href="css/style.css" type="text/css" />
+</head> 
+ 
+<body id="use">  
+
+    <div id="main-content">
+    
+        <h1>AnythingZoomer <span style="font-size: 20px;">v1.0</span></h1>
+
+	   <a href="AnythingZoomer.zip" id="dl">Download</a>
+
+        <ul id="nav">
+            <li class="cal"><a href="index.html">Calendar Demo</a></li>
+            <li class="img"><a href="image.html">Image Demo</a></li>
+            <li class="txt"><a href="text.html">Text Demo</a></li>
+            <li class="dbl"><a href="double.html">Double Demo</a></li>
+            <li class="use"><a href="use.html">Usage</a></li>
+        </ul>
+        
+        <h2>Basics</h2>
+        
+        <p>This is a jQuery plugin, so you'll need to load the jQuery library first, then the plugin file, then invoke the
+        new function on the area you wish to have zooming. There is a specific HTML structure and some required CSS to have all this
+        work correctly, so read on. The full list of parameters is also below.</p>
+        
+        <pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;js/zoomer.jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    $(function() {
+               	
+    	$(&quot;#wrap&quot;).anythingZoomer({
+    	
+    	   expansionSize: 30,
+    	   speedMultiplier: 1.4
+    	
+    	});
+    				
+    });
+&lt;/script&gt;</code></pre>
+               
+        <h2>The HTML</h2>
+        
+        <p>There are five parts to a zoomable area. The idea is to allow for a good amount of flexibility in customizing each part,
+        including having the "small" area be different content than the "large" zooming area.</p>
+        
+        <ul>
+            <li>The Wrap (#wrap) - goes around everything.</li>
+            <li>Small Area (#small) - the default viewable area, that you mouse over to zoom.</li>
+            <li>Large (#large) - the content to be viewable through the zoomer.</li>
+            <li>Overlay (#overlay) - the zooming box that follows the mouse around.</li>
+            <li>Mover (#mover) - a wrap for the large area and overlay.</li>
+        </ul>
+        
+        <p>You are not locked into these ID's though, you can override then when calling the plugin.</p>
+        
+        <pre><code>&lt;div id=&quot;wrap&quot;&gt;
+        
+   &lt;div id=&quot;small&quot;&gt;
+      &lt;img src=&quot;images/rushmore_small.jpg&quot; alt=&quot;small rushmore&quot; /&gt;
+   &lt;/div&gt;
+
+   &lt;div id=&quot;mover&quot;&gt;
+        &lt;div id=&quot;overlay-thing&quot;&gt;&lt;/div&gt;
+
+        &lt;div id=&quot;large&quot;&gt;
+            &lt;img src=&quot;images/rushmore.jpg&quot; alt=&quot;big rushmore&quot; /&gt;                     
+        &lt;/div&gt;
+   &lt;/div&gt;
+   
+&lt;/div&gt;</code></pre>
+
+        <h2>The CSS</h2>
+        
+        <p>The widths, heights, borders and things like that can be altered to your needs. 
+        The positioning, z-index, overflow, and top/left values should stay as it is here to function properly.</p>
+        
+        <pre><code>#wrap          { width: 600px; position: relative; }
+#small         { position: relative; width: 100%; }
+#large         { background: white; position: relative; width: 600px; }
+#mover         { position: absolute; top: 0; left: 0; width: 104px; height: 104px; overflow: hidden; z-index: 100; background: white; display: none; }
+#overlay       { border: 1px solid blue; width: 102px; height: 102px; position: absolute; top: 0; left: 0; z-index: 200; }</code></pre>
+    
+        <h2>All Params</h2>
+
+        <pre><code>$(&quot;#wrap&quot;).anythingZoomer({
+    	
+      expansionSize: 30,      // How far outside the wrap edges the mouse can go
+      speedMultiplier: 1.4,   // How much faster in the inside area moves than the mouse
+      
+      smallArea: "#small",    // Overrides small area ID
+      largeArea: "#large",    // Overrides large area ID
+      zoomPort: "#overlay",   // Overrides zoom overlay area ID
+      mover: "#mover"         // Overrides mover ID
+    	
+});</code></pre>
+        
+   </div>
+   
+</body>
+
+</html>
